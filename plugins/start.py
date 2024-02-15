@@ -55,7 +55,7 @@ async def process_command(client: Client, message, content, start):
             pass
 
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
-async def start_command(client, message, content, start):
+async def start_command(client, message):
     if len(content) <= 7:
         reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton("ʜᴇʟᴘ", callback_data='help'),
