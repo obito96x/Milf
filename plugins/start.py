@@ -98,7 +98,7 @@ async def help(client: Client, message):
     content = message.text
     if len(content) <= 7:
         reply_markup = InlineKeyboardMarkup([
-            [InlineKeyboardButton('​🇸​​🇺​​🇵​​🇵​​🇴​​🇷​​🇹​ ​🇬​​🇷​​🇴​​🇺​​🇵​', url='https://t.me/Hunters_Discussion'),
+            [InlineKeyboardButton('ꜱᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ', url='https://t.me/Hunters_Discussion'),
              InlineKeyboardButton('ʜᴏᴍᴇ', callback_data='start')]
         ])
         await message.reply_photo(photo=START_PIC, caption=ABOUT_TXT.format(
