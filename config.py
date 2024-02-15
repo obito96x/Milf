@@ -37,7 +37,8 @@ FORCESUB_CHANNEL2 = int(os.environ.get("FORCESUB_CHANNEL2", "-1002088653806"))
 
 TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "4"))
 
-START_PIC   = os.environ.get("START_PIC", "https://telegra.ph/file/9f10cfb5ea93d4766357e.jpg")
+START_PIC = os.environ.get("START_PIC", "https://telegra.ph/file/9f10cfb5ea93d4766357e.jpg")
+FORCE_PIC = os.environ.get("FORCE_PIC", "https://telegra.ph/file/541d20525d6938d2fd77e.jpg")
 
 HELP_TXT = "<b>Hi There {first}\nThis is an file to link bot work for @Anime_X_Hunters\n❏ Commands For BOT Admins\n├/start : start the bot\n├/about : Bot Information\n└/stats : checking your bot uptime\n\n👨‍💻 Developed by <a href=https://t.me/Its_Oreki_Hotarou>Hōᴛᴀʀō Oʀᴇᴋɪ</a></b>"
 
