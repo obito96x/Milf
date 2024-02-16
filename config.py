@@ -10,16 +10,16 @@ from logging.handlers import RotatingFileHandler
 
 
 #Bot token @Botfather
-TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "6925557277:AAEpXzWwbt2xWYbYiyWmDCMucTNpKImRkIg")
+TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "0")
 
 #Your API ID from my.telegram.org
-APP_ID = int(os.environ.get("APP_ID", "17540447"))
+APP_ID = int(os.environ.get("APP_ID", "0"))
 
 #Your API Hash from my.telegram.org
-API_HASH = os.environ.get("API_HASH", "8ffa3ede58cd9957f178765dd969ab3e")
+API_HASH = os.environ.get("API_HASH", "0")
 
 #Your db channel Id
-CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1001993058888"))
+CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "0"))
 
 #OWNER ID
 OWNER_ID = int(os.environ.get("OWNER_ID", "5090651635"))
@@ -28,7 +28,7 @@ OWNER_ID = int(os.environ.get("OWNER_ID", "5090651635"))
 PORT = os.environ.get("PORT", "8080")
 
 #Database 
-DB_URI = os.environ.get("DATABASE_URL", "mongodb+srv://sahil:Anonymous_me66@cluster0.debsdff.mongodb.net/?retryWrites=true&w=majority")
+DB_URI = os.environ.get("DATABASE_URL", "0")
 DB_NAME = os.environ.get("DATABASE_NAME", "sahil")
 
 #force sub channel id, if you want enable force sub
@@ -47,7 +47,7 @@ ABOUT_TXT = "<b>⟦⟧ Hi There {first}!💫\n┏━━━━━━━❪❂❫�
 #start message
 START_MSG = os.environ.get("START_MESSAGE", "<b>ʜɪ ᴛʜᴇʀᴇ... {first}! 💥\n\nɪ ᴀᴍ ᴀ ꜰɪʟᴇ ꜱᴛᴏʀᴇ ʙᴏᴛ...!\nɪ ᴄᴀɴ ᴘʀᴏᴠɪᴅᴇ ᴘʀɪᴠᴀᴛᴇ ꜰɪʟᴇꜱ ᴛʜʀᴏᴜɢʜ ᴀ ꜱᴘᴇᴄɪꜰɪᴄ ʟɪɴᴋ....!\nᴘᴏᴡᴇʀᴇᴅ ʙʏ - @Anime_X_Hunters</b>")
 try:
-    ADMINS=[2058121397]
+    ADMINS=[5205293211]
     for x in (os.environ.get("ADMINS", "5205293211").split()):
         ADMINS.append(int(x))
 except ValueError:
