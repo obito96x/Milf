@@ -1,3 +1,17 @@
+import os
+import asyncio
+from pyrogram import Client, filters
+from pyrogram.enums import ParseMode
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.errors import FloodWait
+
+from bot import Bot
+from config import CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON, PROTECT_CONTENT, START_PIC
+from helper_func import decode, get_messages
+from database.database import add_user, present_user
+
+
+
 @Bot.on_message(filters.command('help') & filters.private)
 async def help_cammand(client: Client, message: Message):
     id = message.from_user.id
