@@ -1,18 +1,14 @@
-# Nozel's-file-sharing-Modified
-
-![image](https://github.com/Sahil0976/MultiForce-Sub/assets/97865856/c9cd46d1-e48d-4276-9b39-ac8e3d08ffc4)
+# File Sharing Bot Modified Version
 
 <b>A Telegram Special File Sharing Bot Who Made A Link Of File And You Can Access File Through Link.</b>
-
-##
-
-**Credit - [@CodeXbotz](https://t.me/CodeXBotz)** [@Anime_X_Hunters](https://t.me/Anime_X_Hunters)**
 
 
 
 ### Features
-- Multi Force Sub Modified Of CodeXBotz Created By - [@Its_Tagtaglia_Childe](https://t.me/Its_Tartaglia_Childe)**
+- File sharing modified version made by - [@Its_Oreki_Hotarou](https://t.me/Its_Oreki_Hotarou)**
 - Fully customisable.
+- Two Force Sub Channels.
+- Also working on Render Or Koyeb.
 - Customisable welcome & Forcesub messages.
 - More than one Posts in One Link.
 - Can be deployed on heroku directly.
@@ -48,17 +44,14 @@ python3 main.py
 ### Admin Commands
 
 ```
-/start - start the bot or get posts
-
-/batch - create link for more than one posts
-
-/genlink - create link for one post
-
-/users - view bot statistics
-
-/broadcast - broadcast any messages to bot users
-
-/stats - checking your bot uptime
+start - start the bot or get posts
+batch - create link for more than one posts
+genlink - create link for one post
+users - view bot statistics
+broadcast - broadcast any messages to bot users
+stats - checking your bot uptime
+help - For Help
+about - about bot
 ```
 
 ### Variables
@@ -76,6 +69,8 @@ python3 main.py
 * `FORCESUB_CHANNEL` Optional: ForceSub Channel ID, leave 0 if you want disable force sub
 * `FORCESUB_CHANNEL2` Optional: ForceSub Channel ID, leave 0 if you want disable force sub
 * `PROTECT_CONTENT` Optional: True if you need to prevent files from forwarding
+* `START_PIC` A pic with start message
+* `FORCE_PIC` A pic with forcesub message
 
 ### Extra Variables
 
@@ -89,10 +84,6 @@ python3 main.py
 #### START_MESSAGE | FORCE_SUB_MESSAGE
 
 * `{first}` - User first name
-* `{last}` - User last name
-* `{id}` - User ID
-* `{mention}` - Mention the user
-* `{username}` - Username
 
 #### CUSTOM_CAPTION
 
@@ -103,17 +94,5 @@ python3 main.py
 
 * `{uptime}` - Bot Uptime
 
-
-### Licence
-[![GNU GPLv3 Image](https://www.gnu.org/graphics/gplv3-127x51.png)](http://www.gnu.org/licenses/gpl-3.0.en.html)  
-
-[FILE-SHARING-BOT](https://github.com/Sahil0976/MultiForce-Sub) is Free Software: You can use, study share and improve it at your
-will. Specifically you can redistribute and/or modify it under the terms of the
-[GNU General Public License](https://www.gnu.org/licenses/gpl.html) as
-published by the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version. 
-
-##
-
-   **Star this Repo if you Liked it ⭐⭐⭐**
+**Star this Repo if you Liked it ⭐⭐⭐**
 
