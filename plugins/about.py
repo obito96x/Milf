@@ -6,7 +6,7 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import FloodWait
 
 from bot import Bot
-from config import CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON, PROTECT_CONTENT, START_PIC
+from config import CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON, PROTECT_CONTENT, START_PIC, ABOUT_TXT, HELP_TXT
 from helper_func import decode, get_messages
 from database.database import add_user, present_user
 
@@ -87,7 +87,7 @@ async def help_cammand(client: Client, message: Message):
         ])
         await message.reply_photo(
             photo= START_PIC,
-            caption= START_MSG.format(
+            caption= HELP_TXT.format(
                 first = message.from_user.first_name,
                 last = message.from_user.last_name,
                 username = None if not message.from_user.username else '@' + message.from_user.username,
@@ -174,7 +174,7 @@ async def about_cammand(client: Client, message: Message):
         ])
         await message.reply_photo(
             photo= START_PIC,
-            caption= START_MSG.format(
+            caption= ABOUT_TXT.format(
                 first = message.from_user.first_name,
                 last = message.from_user.last_name,
                 username = None if not message.from_user.username else '@' + message.from_user.username,
