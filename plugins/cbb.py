@@ -4,13 +4,16 @@ from pyrogram import Client
 from bot import Bot
 from config import OWNER_ID, ABOUT_TXT, HELP_TXT, START_MSG
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
+from database.database import add_user, del_user, full_userbase, present_user
+
+first = message.from_user.first_name,
 
 @Bot.on_callback_query()
 async def cb_handler(client: Bot, query: CallbackQuery):
     data = query.data
     if data == "help":
         await query.message.edit_text(
-            text = HELP_TXT,
+            text = HELP_TXT.format(message.from_user.first_name),
             disable_web_page_preview = True,
             reply_markup = InlineKeyboardMarkup(
                 [
@@ -23,7 +26,7 @@ async def cb_handler(client: Bot, query: CallbackQuery):
         )
     elif data == "about":
         await query.message.edit_text(
-            text = ABOUT_TXT,
+            text = ABOUT_TXT.format(message.from_user.first_name),
             disable_web_page_preview = True,
             reply_markup = InlineKeyboardMarkup(
                 [
@@ -34,7 +37,7 @@ async def cb_handler(client: Bot, query: CallbackQuery):
         )
     elif data == "start":
         await query.message.edit_text(
-            text = START_MSG,
+            text = START_MSG.format(message.from_user.first_name),
             disable_web_page_preview = True,
             reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton("ʜᴇʟᴘ", callback_data='help'),
