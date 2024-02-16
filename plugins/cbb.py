@@ -10,7 +10,7 @@ async def cb_handler(client: Bot, query: CallbackQuery):
     data = query.data
     if data == "help":
         await query.message.edit_text(
-            text = HELP_TXT,
+            text = HELP_TXT.format(query.from_user.mention),
             disable_web_page_preview = True,
             reply_markup = InlineKeyboardMarkup(
                 [
@@ -23,7 +23,7 @@ async def cb_handler(client: Bot, query: CallbackQuery):
         )
     elif data == "about":
         await query.message.edit_text(
-            text = ABOUT_TXT,
+            text = ABOUT_TXT.format(query.from_user.mention),
             disable_web_page_preview = True,
             reply_markup = InlineKeyboardMarkup(
                 [
@@ -34,7 +34,7 @@ async def cb_handler(client: Bot, query: CallbackQuery):
         )
     elif data == "start":
         await query.message.edit_text(
-            text = START_MSG,
+            text = START_MSG.format(query.from_user.mention),
             disable_web_page_preview = True,
             reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton("ʜᴇʟᴘ", callback_data='help'),
