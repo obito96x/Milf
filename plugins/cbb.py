@@ -10,13 +10,7 @@ async def cb_handler(client: Bot, query: CallbackQuery):
     data = query.data
     if data == "help":
         await query.message.edit_text(
-            text = HELP_TXT.format(
-                first = message.from_user.first_name,
-                last = message.from_user.last_name,
-                username = None if not message.from_user.username else '@' + message.from_user.username,
-                mention = message.from_user.mention,
-                id = message.from_user.id
-            ),
+            text = HELP_TXT,
             disable_web_page_preview = True,
             reply_markup = InlineKeyboardMarkup(
                 [
@@ -29,13 +23,7 @@ async def cb_handler(client: Bot, query: CallbackQuery):
         )
     elif data == "about":
         await query.message.edit_text(
-            text = ABOUT_TXT.format(
-                first = message.from_user.first_name,
-                last = message.from_user.last_name,
-                username = None if not message.from_user.username else '@' + message.from_user.username,
-                mention = message.from_user.mention,
-                id = message.from_user.id
-            ),
+            text = ABOUT_TXT,
             disable_web_page_preview = True,
             reply_markup = InlineKeyboardMarkup(
                 [
@@ -46,13 +34,7 @@ async def cb_handler(client: Bot, query: CallbackQuery):
         )
     elif data == "start":
         await query.message.edit_text(
-            text = START_MSG.format(
-                first = message.from_user.first_name,
-                last = message.from_user.last_name,
-                username = None if not message.from_user.username else '@' + message.from_user.username,
-                mention = message.from_user.mention,
-                id = message.from_user.id
-            ),
+            text = START_MSG,
             disable_web_page_preview = True,
             reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton("ʜᴇʟᴘ", callback_data='help'),
