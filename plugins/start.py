@@ -99,7 +99,7 @@ async def start_command(client: Client, message: Message):
         )
         return
     
-@Bot.on_message(filters.command('help') & filters.private & subscribed)
+@Bot.on_message(filters.command('help') & filters.private)
 async def start_command(client: Client, message: Message):
     id = message.from_user.id
     if not await present_user(id):
@@ -186,7 +186,7 @@ async def start_command(client: Client, message: Message):
         )
         return
     
-@Bot.on_message(filters.command('about') & filters.private & subscribed)
+@Bot.on_message(filters.command('about') & filters.private)
 async def start_command(client: Client, message: Message):
     id = message.from_user.id
     if not await present_user(id):
@@ -305,7 +305,7 @@ async def not_joined(client: Client, message: Message):
         pass
 
     await message.reply_photo(
-    photo=START_PIC, 
+    photo=FORCE_PIC, 
     caption=FORCE_MSG.format(
         first=message.from_user.first_name,
         last=message.from_user.last_name,
