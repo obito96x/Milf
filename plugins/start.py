@@ -168,7 +168,7 @@ async def start_command(client: Client, message: Message):
     else:
         reply_markup = InlineKeyboardMarkup([
             [
-                        InlineKeyboardButton('ʜᴏᴍᴇ​', callback_data='start'),
+                        InlineKeyboardButton('ʜᴏᴍᴇ​', callback_data='home'),
                         InlineKeyboardButton("ᴄʟᴏꜱᴇ", callback_data='close')
                     ]
         ])
@@ -255,7 +255,7 @@ async def start_command(client: Client, message: Message):
     else:
         reply_markup = InlineKeyboardMarkup([
             [
-                        InlineKeyboardButton('ʜᴏᴍᴇ​', callback_data='start'),
+                        InlineKeyboardButton('ʜᴏᴍᴇ​', callback_data='home'),
                         InlineKeyboardButton("ᴄʟᴏꜱᴇ", callback_data='close')
                     ]
         ])
