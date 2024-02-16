@@ -55,7 +55,7 @@
     },
     "ADMINS": {
       "description": "A space separated list of user_ids of Admins, they can only create links",
-      "value": "2058121397",
+      "value": "0",
       "required": false
     },
     "PROTECT_CONTENT": {
