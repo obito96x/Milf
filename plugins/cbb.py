@@ -15,7 +15,7 @@ async def cb_handler(client: Bot, query: CallbackQuery):
             reply_markup = InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton('ʜᴏᴍᴇ​', callback_data='start'),
+                        InlineKeyboardButton('ʜᴏᴍᴇ​', callback_data='home'),
                         InlineKeyboardButton("ᴄʟᴏꜱᴇ", callback_data='close')
                     ]
                 ]
@@ -27,12 +27,12 @@ async def cb_handler(client: Bot, query: CallbackQuery):
             disable_web_page_preview = True,
             reply_markup = InlineKeyboardMarkup(
                 [
-                    [InlineKeyboardButton('ʜᴏᴍᴇ', callback_data='start'),
+                    [InlineKeyboardButton('ʜᴏᴍᴇ', callback_data='home'),
                      InlineKeyboardButton('ᴄʟᴏꜱᴇ', callback_data='close')]
                 ]
             )
         )
-    elif data == "start":
+    elif data == "home":
         await query.message.edit_text(
             text = START_MSG,
             disable_web_page_preview = True,
