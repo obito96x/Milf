@@ -44,7 +44,6 @@ HELP_TEXT = """<b>⁉️ Hᴇʟʟᴏ {mention} ~
 <b><i>◈ Sᴛɪʟʟ ʜᴀᴠᴇ ᴅᴏᴜʙᴛs, ᴄᴏɴᴛᴀᴄᴛ ʙᴇʟᴏᴡ ᴘᴇʀsᴏɴs/ɢʀᴏᴜᴘ ᴀs ᴘᴇʀ ʏᴏᴜʀ ɴᴇᴇᴅ !</i></b>"""
 
 ABOUT_TXT = """<b>🤖 ᴍʏ ɴᴀᴍᴇ: {botname}
-<blockquote expandable>◈ ᴀᴅᴠᴀɴᴄᴇ ғᴇᴀᴛᴜʀᴇs: <a href='https://telegra.ph/BOT-FEATURES-11-09-28'>Cʟɪᴄᴋ ʜᴇʀᴇ</a>
 <b>» ᴄʀᴇᴀᴛᴏʀ: <a href=https://t.me/_i_killed_my_clan>ᴏʙɪᴛᴏ</a>\n» ᴏᴜʀ ᴄᴏᴍᴍᴜɴɪᴛʏ : <a href=https://t.me/society_network>sᴏᴄɪᴇᴛʏ ɴᴇᴛᴡᴏʀᴋ</a>\n» ᴀɴɪᴍᴇ ᴄʜᴀɴɴᴇʟ : <a href=https://t.me/animes_society_official>ᴀɴɪᴍᴇ sᴏᴄɪᴇᴛʏ </a>\n» sᴏᴄɪᴇᴛʏ ɪɴᴅᴜsᴛʀʏ : <a href=https://t.me/Ongoing_society>ᴏɴɢᴏɪɴɢ sᴏᴄɪᴇᴛʏ</a>\n» ɪɴᴅᴜsᴛʀʏ ɴᴇᴡs : <a href=https://t.me/MangaStuffs>sᴏᴄɪᴇᴛʏ ɴᴇᴡs</a>\n» ᴅᴇᴠᴇʟᴏᴘᴇʀ : <a href=https://t.me/i_killed_my_clan>ᴏʙɪᴛᴏ</a></b>"""
 
 SETTING_TXT = """<b>⚙️ Cᴏɴғɪɢᴜʀᴀᴛɪᴏɴs</b>
