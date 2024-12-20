@@ -10,16 +10,16 @@ from logging.handlers import RotatingFileHandler
 TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "7378354734:AAGb8dZm_Ref8Ln3brARcwrllIkZwWgJMhM")
 
 #Your API ID from my.telegram.org, --⚠️ REQUIRED--
-APP_ID = int(os.environ.get("APP_ID", "28744454"))
+APP_ID = int(os.environ.get("APP_ID", "20718334"))
 
 #Your API Hash from my.telegram.org, --⚠️ REQUIRED--
-API_HASH = os.environ.get("API_HASH", "debd37cef0ad1a1ce45d0be8e8c3c5e7")
+API_HASH = os.environ.get("API_HASH", "4e81464b29d79c58d0ad8a0c55ece4a5")
 
 #Your db channel Id --⚠️ REQUIRED--
-CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002437344784"))
+CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002177334941"))
 
 #OWNER ID --⚠️ REQUIRED--
-OWNER_ID = int(os.environ.get("OWNER_ID", "6266529037"))
+OWNER_ID = int(os.environ.get("OWNER_ID", "5585016974"))
 
 #SUPPORT_GROUP: This is used for normal users for getting help if they don't understand how to use the bot --⚠ OPTIONAL--
 SUPPORT_GROUP = os.environ.get("SUPPORT_GROUP", "")
@@ -38,7 +38,7 @@ TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "4"))
 PICS = (os.environ.get("PICS", "https://envs.sh/4Iq.jpg https://envs.sh/4IW.jpg https://envs.sh/4IB.jpg https://envs.sh/4In.jpg")).split() #Required
 
 #set your Custom Caption here, Keep None for Disable Custom Caption
-CUSTOM_CAPTION = os.environ.get("CUSTOM_CAPTION", None)
+CUSTOM_CAPTION = os.environ.get("CUSTOM_CAPTION", "{filename}/n» ʙʏ <a href=https://t.me/society_network>ᴀɴɪᴍᴇ sᴏᴄɪᴇᴛʏ</a>")
 
 LOG_FILE_NAME = "filesharingbot.txt"
 
