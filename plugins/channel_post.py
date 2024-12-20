@@ -1,4 +1,3 @@
-#(©)Codexbotz
 
 import asyncio
 from pyrogram import filters, Client
@@ -6,46 +5,48 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import FloodWait
 
 from bot import Bot
-from config import ADMINS, CHANNEL_ID, DISABLE_CHANNEL_BUTTON
-from helper_func import encode
+from config import CHANNEL_ID
+from helper_func import encode, is_admin
+command_list = ['start', 'users', 'broadcast', 'batch', 'genlink', 'help', 'cmd', 'info', 'add_fsub', 'fsub_chnl', 'restart', 'del_fsub', 'add_admins', 'del_admins', 'admin_list', 'cancel', 'auto_del', 'forcesub', 'files', 'add_banuser', 'del_banuser', 'banuser_list', 'status', 'req_fsub']
 
-@Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
+@Bot.on_message(~filters.command(command_list) & filters.private & is_admin)
 async def channel_post(client: Client, message: Message):
-    reply_text = await message.reply_text("Please Wait...!", quote = True)
+        
+    reply_text = await message.reply_text("<b><i>Pʀᴏᴄᴇssɪɴɢ....</i></b>", quote=True)
     try:
-        post_message = await message.copy(chat_id = client.db_channel.id, disable_notification=True)
+        post_message = await message.copy(chat_id=client.db_channel.id, disable_notification=True)
     except FloodWait as e:
         await asyncio.sleep(e.x)
-        post_message = await message.copy(chat_id = client.db_channel.id, disable_notification=True)
+        post_message = await message.copy(chat_id=client.db_channel.id, disable_notification=True)
     except Exception as e:
         print(e)
-        await reply_text.edit_text("Something went Wrong..!")
+        await reply_text.edit_text("<b>Sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ..!</b>")
         return
     converted_id = post_message.id * abs(client.db_channel.id)
     string = f"get-{converted_id}"
     base64_string = await encode(string)
     link = f"https://t.me/{client.username}?start={base64_string}"
 
-    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("📫 ʏᴏᴜʀ ᴜʀʟ", url=f'https://telegram.me/share/url?url={link}')]])
+    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Sʜᴀʀᴇ URL", url=f'https://telegram.me/share/url?url={link}')]])
 
-    await reply_text.edit(f"<b>Here is your link</b>\n\n{link}", reply_markup=reply_markup, disable_web_page_preview = True)
+    await reply_text.edit(f"<b>Bᴇʟᴏᴡ ɪs ʏᴏᴜʀ ʟɪɴᴋ::</b>\n<blockquote>{link}</blockquote>", reply_markup=reply_markup, disable_web_page_preview=True)
 
-    if not DISABLE_CHANNEL_BUTTON:
-        await post_message.edit_reply_markup(reply_markup)
+    #if not DISABLE_CHANNEL_BUTTON:
+        #await post_message.edit_reply_markup(reply_markup)
 
-@Bot.on_message(filters.channel & filters.incoming & filters.chat(CHANNEL_ID))
+"""@Bot.on_message(filters.channel & filters.incoming & filters.chat(CHANNEL_ID))
 async def new_post(client: Client, message: Message):
 
-    if DISABLE_CHANNEL_BUTTON:
+    if True:
         return
 
     converted_id = message.id * abs(client.db_channel.id)
     string = f"get-{converted_id}"
     base64_string = await encode(string)
     link = f"https://t.me/{client.username}?start={base64_string}"
-    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("📫 ʏᴏᴜʀ ᴜʀʟ​", url=f'https://telegram.me/share/url?url={link}')]])
+    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=f'https://telegram.me/share/url?url={link}')]])
     try:
         await message.edit_reply_markup(reply_markup)
     except Exception as e:
         print(e)
-        pass
+        pass"""

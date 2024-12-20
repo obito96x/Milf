@@ -1,38 +1,48 @@
+# +++ Made By King [telegram username: @Shidoteshika1] +++
+
 import os
+import sys
+import random
 import asyncio
-from pyrogram import Client, filters
-from pyrogram.enums import ParseMode
-from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
-from pyrogram.errors import FloodWait, UserIsBlocked, InputUserDeactivated
-
+import subprocess
 from bot import Bot
-from config import ADMINS, FORCE_MSG, START_MSG, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON, PROTECT_CONTENT, START_PIC, ABOUT_TXT, HELP_TXT, FORCE_PIC
-from helper_func import subscribed, encode, decode, get_messages
-from database.database import add_user, del_user, full_userbase, present_user
+from database.database import kingdb
+from pyrogram import Client, filters
+from pyrogram.errors import FloodWait
+from plugins.FORMATS import START_MSG, FORCE_MSG
+from pyrogram.enums import ParseMode, ChatAction
+from config import CUSTOM_CAPTION, OWNER_ID, PICS
+from plugins.autoDelete import auto_del_notification, delete_message
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, InputMediaPhoto
+from helper_func import banUser, is_userJoin, is_admin, subscribed, encode, decode, get_messages
 
 
-@Bot.on_message(filters.command('start') & filters.private & subscribed)
-async def start_command(client: Client, message: Message):
-    id = message.from_user.id
-    if not await present_user(id):
-        try:
-            await add_user(id)
-        except:
-            pass
-    text = message.text
+@Bot.on_message(filters.command('start') & filters.private & ~banUser & subscribed)
+async def start_command(client: Client, message: Message): 
+    await message.reply_chat_action(ChatAction.CHOOSE_STICKER)
+    id = message.from_user.id  
+    
+    if not await kingdb.present_user(id):
+        try: await kingdb.add_user(id)
+        except: pass
+                
+    text = message.text        
     if len(text)>7:
-        try:
-            base64_string = text.split(" ", 1)[1]
-        except:
-            return
+        await message.delete()
+
+        try: base64_string = text.split(" ", 1)[1]
+        except: return
+                
         string = await decode(base64_string)
         argument = string.split("-")
+        
         if len(argument) == 3:
             try:
                 start = int(int(argument[1]) / abs(client.db_channel.id))
                 end = int(int(argument[2]) / abs(client.db_channel.id))
             except:
                 return
+                    
             if start <= end:
                 ids = range(start,end+1)
             else:
@@ -43,50 +53,61 @@ async def start_command(client: Client, message: Message):
                     i -= 1
                     if i < end:
                         break
+                            
         elif len(argument) == 2:
-            try:
-                ids = [int(int(argument[1]) / abs(client.db_channel.id))]
-            except:
-                return
-        temp_msg = await message.reply("Loading...")
-        try:
-            messages = await get_messages(client, ids)
-        except:
-            await message.reply_text("Something went wrong..!")
-            return
-        await temp_msg.delete()
-
-        for msg in messages:
-
+            try: ids = [int(int(argument[1]) / abs(client.db_channel.id))]
+            except: return
+                    
+        last_message = None
+        await message.reply_chat_action(ChatAction.UPLOAD_DOCUMENT)  
+        
+        try: messages = await get_messages(client, ids)
+        except: return await message.reply("<b><i>Sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ..!</i></b>")
+            
+        AUTO_DEL, DEL_TIMER, HIDE_CAPTION, CHNL_BTN, PROTECT_MODE = await asyncio.gather(kingdb.get_auto_delete(), kingdb.get_del_timer(), kingdb.get_hide_caption(), kingdb.get_channel_button(), kingdb.get_protect_content())   
+        if CHNL_BTN: button_name, button_link = await kingdb.get_channel_button_link()
+            
+        for idx, msg in enumerate(messages):
             if bool(CUSTOM_CAPTION) & bool(msg.document):
                 caption = CUSTOM_CAPTION.format(previouscaption = "" if not msg.caption else msg.caption.html, filename = msg.document.file_name)
+
+            elif HIDE_CAPTION and (msg.document or msg.audio):
+                caption = ""
+
             else:
                 caption = "" if not msg.caption else msg.caption.html
 
-            if DISABLE_CHANNEL_BUTTON:
-                reply_markup = msg.reply_markup
+            if CHNL_BTN:
+                reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton(text=button_name, url=button_link)]]) if msg.document or msg.photo or msg.video or msg.audio else None
             else:
-                reply_markup = None
-
+                reply_markup = msg.reply_markup   
+                    
             try:
-                await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = ParseMode.HTML, reply_markup = reply_markup, protect_content=PROTECT_CONTENT)
-                await asyncio.sleep(0.5)
+                copied_msg = await msg.copy(chat_id=id, caption=caption, parse_mode=ParseMode.HTML, reply_markup=reply_markup, protect_content=PROTECT_MODE)
+                await asyncio.sleep(0.1)
+
+                if AUTO_DEL:
+                    asyncio.create_task(delete_message(copied_msg, DEL_TIMER))
+                    if idx == len(messages) - 1: last_message = copied_msg
+
             except FloodWait as e:
                 await asyncio.sleep(e.x)
-                await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = ParseMode.HTML, reply_markup = reply_markup, protect_content=PROTECT_CONTENT)
-            except:
-                pass
-        return
-    else:
-        reply_markup=InlineKeyboardMarkup([
-                    [InlineKeyboardButton("• ғᴏʀ ᴍᴏʀᴇ •", url='https://t.me/anime_sub_society')],
-                    [InlineKeyboardButton("• ᴀʙᴏᴜᴛ", callback_data='about'),
-                     InlineKeyboardButton("ʜᴇʟᴘ •", url='https://t.me/ahss_help_zone')],
-                    [InlineKeyboardButton("• ᴏᴜʀ ᴄᴏᴍᴍᴜɴɪᴛʏ •", url='https://t.me/society_network')],
-                ])
+                copied_msg = await msg.copy(chat_id=id, caption=caption, parse_mode=ParseMode.HTML, reply_markup=reply_markup, protect_content=PROTECT_MODE)
+                await asyncio.sleep(0.1)
+                
+                if AUTO_DEL:
+                    asyncio.create_task(delete_message(copied_msg, DEL_TIMER))
+                    if idx == len(messages) - 1: last_message = copied_msg
+                        
+        if AUTO_DEL and last_message:
+                asyncio.create_task(auto_del_notification(client.username, last_message, DEL_TIMER, message.command[1]))
+                        
+    else:   
+        reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton('⛩️ Aɴɪᴍᴇ', url='https://t.me/Anime_Weekends'), InlineKeyboardButton('⚡️ Oɴɢᴏɪɴɢ', url='https://t.me/Ongoing_Weekends')], [InlineKeyboardButton('🌐 Eᴍɪɴᴇɴᴄᴇ Sᴏᴄɪᴇᴛʏ', url='https://t.me/Eminence_Society')]])
+
         await message.reply_photo(
-            photo= START_PIC,
-            caption= START_MSG.format(
+            photo = random.choice(PICS),
+            caption = START_MSG.format(
                 first = message.from_user.first_name,
                 last = message.from_user.last_name,
                 username = None if not message.from_user.username else '@' + message.from_user.username,
@@ -94,104 +115,114 @@ async def start_command(client: Client, message: Message):
                 id = message.from_user.id
             ),
             reply_markup = reply_markup,
-            
+	        message_effect_id=5104841245755180586 #🔥
         )
-        return
-    
+        try: await message.delete()
+        except: pass
 
-#=====================================================================================##
+   
+##===================================================================================================================##
 
-WAIT_MSG = "<b>Working....</b>"
+#TRIGGRED START MESSAGE FOR HANDLE FORCE SUB MESSAGE AND FORCE SUB CHANNEL IF A USER NOT JOINED A CHANNEL
 
-REPLY_ERROR = "<code>Use this command as a reply to any telegram message without any spaces.</code>"
+##===================================================================================================================##   
 
-#=====================================================================================##
 
-    
-    
-@Bot.on_message(filters.command('start') & filters.private)
+# Create a global dictionary to store chat data
+chat_data_cache = {}
+
+@Bot.on_message(filters.command('start') & filters.private & ~banUser)
 async def not_joined(client: Client, message: Message):
-    buttons = [
-        [
-            InlineKeyboardButton(text="• ⚡ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ 1⚡", url=client.invitelink2),
-            InlineKeyboardButton(text="⚡ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ 2⚡ •", url=client.invitelink3),
-        ],
-        [
-            InlineKeyboardButton(text="• ⚡ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ⚡ •", url=client.invitelink),
-        ]
-    ]
+    temp = await message.reply(f"<b>??</b>")
+    
+    user_id = message.from_user.id
+               
+    REQFSUB = await kingdb.get_request_forcesub()
+    buttons = []
+    count = 0
+
     try:
-        buttons.append(
-            [
-                InlineKeyboardButton(
-                    text = '• ⚡ ɴᴏᴡ ᴄʟɪᴄᴋ ʜᴇʀᴇ ⚡ •',
-                    url = f"https://t.me/{client.username}?start={message.command[1]}"
+        for total, chat_id in enumerate(await kingdb.get_all_channels(), start=1):
+            await message.reply_chat_action(ChatAction.PLAYING)
+            
+            # Show the join button of non-subscribed Channels.....
+            if not await is_userJoin(client, user_id, chat_id):
+                try:
+                    # Check if chat data is in cache
+                    if chat_id in chat_data_cache:
+                        data = chat_data_cache[chat_id]  # Get data from cache
+                    else:
+                        data = await client.get_chat(chat_id)  # Fetch from API
+                        chat_data_cache[chat_id] = data  # Store in cache
+                    
+                    cname = data.title
+                    
+                    # Handle private channels and links
+                    if REQFSUB and not data.username: 
+                        link = await kingdb.get_stored_reqLink(chat_id)
+                        await kingdb.add_reqChannel(chat_id)
+                        
+                        if not link:
+                            link = (await client.create_chat_invite_link(chat_id=chat_id, creates_join_request=True)).invite_link
+                            await kingdb.store_reqLink(chat_id, link)
+                    else:
+                        link = data.invite_link
+
+                    # Add button for the chat
+                    buttons.append([InlineKeyboardButton(text=cname, url=link)])
+                    count += 1
+                    await temp.edit(f"<b>{'! ' * count}</b>")
+                                                            
+                except Exception as e:
+                    print(f"Can't Export Channel Name and Link..., Please Check If the Bot is admin in the FORCE SUB CHANNELS:\nProvided Force sub Channel:- {chat_id}")
+                    return await temp.edit(f"<b><i>! Eʀʀᴏʀ, Cᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ ᴛᴏ sᴏʟᴠᴇ ᴛʜᴇ ɪssᴜᴇs @Shidoteshika1</i></b>\n<blockquote expandable><b>Rᴇᴀsᴏɴ:</b> {e}</blockquote>")
+
+        try:
+            buttons.append([InlineKeyboardButton(text='♻️ Tʀʏ Aɢᴀɪɴ', url=f"https://t.me/{client.username}?start={message.command[1]}")])
+        except IndexError:
+            pass
+
+        await message.reply_chat_action(ChatAction.CANCEL)
+        await temp.edit_media(
+            media=InputMediaPhoto(
+                random.choice(PICS),
+                caption=FORCE_MSG.format(
+                    first=message.from_user.first_name,
+                    last=message.from_user.last_name,
+                    username=None if not message.from_user.username else '@' + message.from_user.username,
+                    mention=message.from_user.mention,
+                    id=message.from_user.id,
+                    count=count,
+                    total=total
                 )
-            ]
+            ),
+            reply_markup=InlineKeyboardMarkup(buttons),
         )
-    except IndexError:
-        pass
+                
+        try: await message.delete()
+        except: pass
+                        
+    except Exception as e:
+        print(f"Unable to perform forcesub buttons reason : {e}")
+        return await temp.edit(f"<b><i>! Eʀʀᴏʀ, Cᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ ᴛᴏ sᴏʟᴠᴇ ᴛʜᴇ ɪssᴜᴇs @Shidoteshika1</i></b>\n<blockquote expandable><b>Rᴇᴀsᴏɴ:</b> {e}</blockquote>")
 
-    await message.reply_photo(
-    photo=FORCE_PIC, 
-    caption=FORCE_MSG.format(
-        first=message.from_user.first_name,
-        last=message.from_user.last_name,
-        username=None if not message.from_user.username else '@' + message.from_user.username,
-        mention=message.from_user.mention,
-        id=message.from_user.id
-    ),
-    reply_markup=InlineKeyboardMarkup(buttons)
-)
 
-@Bot.on_message(filters.command('users') & filters.private & filters.user(ADMINS))
-async def get_users(client: Bot, message: Message):
-    msg = await client.send_message(chat_id=message.chat.id, text=WAIT_MSG)
-    users = await full_userbase()
-    await msg.edit(f"{len(users)} users are using this bot")
+#=====================================================================================##
+#......... RESTART COMMAND FOR RESTARTING BOT .......#
+#=====================================================================================##
 
-@Bot.on_message(filters.private & filters.command('broadcast') & filters.user(ADMINS))
-async def send_text(client: Bot, message: Message):
-    if message.reply_to_message:
-        query = await full_userbase()
-        broadcast_msg = message.reply_to_message
-        total = 0
-        successful = 0
-        blocked = 0
-        deleted = 0
-        unsuccessful = 0
-        
-        pls_wait = await message.reply("<i>ʙʀᴏᴀᴅᴄᴀꜱᴛ ᴘʀᴏᴄᴇꜱꜱɪɴɢ....</i>")
-        for chat_id in query:
-            try:
-                await broadcast_msg.copy(chat_id)
-                successful += 1
-            except FloodWait as e:
-                await asyncio.sleep(e.x)
-                await broadcast_msg.copy(chat_id)
-                successful += 1
-            except UserIsBlocked:
-                await del_user(chat_id)
-                blocked += 1
-            except InputUserDeactivated:
-                await del_user(chat_id)
-                deleted += 1
-            except:
-                unsuccessful += 1
-                pass
-            total += 1
-        
-        status = f"""<b><u>ʙʀᴏᴀᴅᴄᴀꜱᴛ...</u>
-
-Total Users: <code>{total}</code>
-Successful: <code>{successful}</code>
-Blocked Users: <code>{blocked}</code>
-Deleted Accounts: <code>{deleted}</code>
-Unsuccessful: <code>{unsuccessful}</code></b>"""
-        
-        return await pls_wait.edit(status)
-
-    else:
-        msg = await message.reply(REPLY_ERROR)
-        await asyncio.sleep(8)
+@Bot.on_message(filters.command('restart') & filters.private & filters.user(OWNER_ID))
+async def restart_bot(client: Client, message: Message):
+    print("Restarting bot...")
+    msg = await message.reply(text=f"<b><i><blockquote>⚠️ {client.name} ɢᴏɪɴɢ ᴛᴏ Rᴇsᴛᴀʀᴛ...</blockquote></i></b>")
+    try:
+        await asyncio.sleep(6)  # Wait for 6 seconds before restarting
         await msg.delete()
+        args = [sys.executable, "main.py"]  # Adjust this if your start file is named differently
+        os.execl(sys.executable, *args)
+    except Exception as e:
+        print(f"Error occured while Restarting the bot: {e}")
+        return await msg.edit_text(f"<b><i>! Eʀʀᴏʀ, Cᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ ᴛᴏ sᴏʟᴠᴇ ᴛʜᴇ ɪssᴜᴇs @Shidoteshika1</i></b>\n<blockquote expandable><b>Rᴇᴀsᴏɴ:</b> {e}</blockquote>")
+    # Optionally, you can add cleanup tasks here
+    #subprocess.Popen([sys.executable, "main.py"])  # Adjust this if your start file is named differently
+    #sys.exit()
