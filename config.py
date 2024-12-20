@@ -35,10 +35,10 @@ DB_NAME = os.environ.get("DATABASE_NAME", "Jeffy1")
 TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "4"))
 
 #Collection of pics for Bot // #Optional but atleast one pic link should be replaced if you don't want predefined links
-PICS = (os.environ.get("PICS", "https://envs.sh/4Iq.jpg https://envs.sh/4IW.jpg https://envs.sh/4IB.jpg https://envs.sh/4In.jpg")).split() #Required
+PICS = (os.environ.get("PICS", "https://envs.sh/W9M.jpg https://envs.sh/3PQ.jpg https://envs.sh/Chb.jpg https://envs.sh/Ckc.jpg https://envs.sh/7nm.jpg")).split() #Required
 
 #set your Custom Caption here, Keep None for Disable Custom Caption
-CUSTOM_CAPTION = os.environ.get("CUSTOM_CAPTION", "{filename}/n» ʙʏ <a href=https://t.me/society_network>ᴀɴɪᴍᴇ sᴏᴄɪᴇᴛʏ</a>")
+CUSTOM_CAPTION = os.environ.get("CUSTOM_CAPTION", "{filename}» ʙʏ <a href=https://t.me/society_network>ᴀɴɪᴍᴇ sᴏᴄɪᴇᴛʏ</a>")
 
 LOG_FILE_NAME = "filesharingbot.txt"
 
