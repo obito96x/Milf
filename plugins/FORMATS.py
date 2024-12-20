@@ -2,10 +2,10 @@
 
 #text formatting....
 
-on_pic = "https://telegra.ph/file/5593d624d11d92bceb48e.jpg"
-off_pic = "https://telegra.ph/file/0d9e590f62b63b51d4bf9.jpg"
-files_cmd_pic = "https://telegra.ph/file/d44f46054250a73053614.jpg"
-autodel_cmd_pic = "https://telegra.ph/file/a64533814021b40057ccd.jpg"
+on_pic = "https://envs.sh/7nm.jpg"
+off_pic = "https://envs.sh/7nm.jpg"
+files_cmd_pic = "https://envs.sh/7nm.jpg"
+autodel_cmd_pic = "https://envs.sh/7nm.jpg"
 
 #start message
 START_MSG = """<b>⚡ Hᴇʏ, {mention} ~
@@ -46,11 +46,7 @@ HELP_TEXT = """<b>⁉️ Hᴇʟʟᴏ {mention} ~
 
 ABOUT_TXT = """<b>🤖 ᴍʏ ɴᴀᴍᴇ: {botname}
 <blockquote expandable>◈ ᴀᴅᴠᴀɴᴄᴇ ғᴇᴀᴛᴜʀᴇs: <a href='https://telegra.ph/BOT-FEATURES-11-09-28'>Cʟɪᴄᴋ ʜᴇʀᴇ</a>
-◈ ᴏᴡɴᴇʀ: {ownername}
-◈ ʟᴀɴɢᴜᴀɢᴇ: <a href='https://docs.python.org/3/'>Pʏᴛʜᴏɴ 3</a>
-◈ ʟɪʙʀᴀʀʏ: <a href='https://docs.pyrogram.org/'>Pʏʀᴏɢʀᴀᴍ ᴠ2</a>
-◈ ᴅᴀᴛᴀʙᴀsᴇ: <a href='https://www.mongodb.com/docs/'>Mᴏɴɢᴏ ᴅʙ</a>
-🧑‍💻 ᴅᴇᴠᴇʟᴏᴘᴇʀ: @JeffreySama</b></blockquote>"""
+<b>» ᴄʀᴇᴀᴛᴏʀ: <a href=https://t.me/_i_killed_my_clan>ᴏʙɪᴛᴏ</a>\n» ᴏᴜʀ ᴄᴏᴍᴍᴜɴɪᴛʏ : <a href=https://t.me/society_network>sᴏᴄɪᴇᴛʏ ɴᴇᴛᴡᴏʀᴋ</a>\n» ᴀɴɪᴍᴇ ᴄʜᴀɴɴᴇʟ : <a href=https://t.me/animes_society_official>ᴀɴɪᴍᴇ sᴏᴄɪᴇᴛʏ </a>\n» sᴏᴄɪᴇᴛʏ ɪɴᴅᴜsᴛʀʏ : <a href=https://t.me/Ongoing_society>ᴏɴɢᴏɪɴɢ sᴏᴄɪᴇᴛʏ</a>\n» ɪɴᴅᴜsᴛʀʏ ɴᴇᴡs : <a href=https://t.me/MangaStuffs>sᴏᴄɪᴇᴛʏ ɴᴇᴡs</a>\n» ᴅᴇᴠᴇʟᴏᴘᴇʀ : <a href=https://t.me/i_killed_my_clan>ᴏʙɪᴛᴏ</a></b>"""
 
 SETTING_TXT = """<b>⚙️ Cᴏɴғɪɢᴜʀᴀᴛɪᴏɴs</b>
 <blockquote expandable>◈ ᴛᴏᴛᴀʟ ғᴏʀᴄᴇ sᴜʙ ᴄʜᴀɴɴᴇʟ:  <b>{total_fsub}</b>
