@@ -1,98 +1,57 @@
-# File Sharing Bot Modified Version
+### <h1>ADVANCE FILE SHARING BOT V3 🤖</h1>
+<img src="https://telegra.ph/file/ff8fbe7d67a3c7492c353.jpg">
+<blockquote><b>THIS IS AN ADVANCE FILE SHARING BOT WITH REQUEST FORCE-FSUB, MADE BY ➪ <a href="https://t.me/Shidoteshika1">King 王</a><br> HERE ONLY THE HIGHLIGHTTED FEATURES ARE MENTIONED BELOW ;</b></blockquote>
 
-<b>A Telegram Special File Sharing Bot Who Made A Link Of File And You Can Access File Through Link.</b>
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
+### <h2> 🌟 BOT FEATURES 1.1: </h2>
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"><br>
+### 1. FORCE-SUB 📢: 
+<i>You can add one or multiple force-sub channels—there's no limit to the number you can add. You can also empty the list by deleting all force-sub channels. This feature provides versatility, allowing you to create a custom number of force-sub channels according to your preference.</i>
 
+### 1.1. REQUEST FORCE-SUB 📢: 
+<i>The most demanding aspect is the Request Force-Sub feature. By enabling Request Force-Sub mode, users are provided with a private channel link along with a join request. This feature adds versatility, allowing for greater flexibility in managing Force-Sub channels based on individual preferences. Additionally, the Request Force-Sub settings offer interactive features that enable more advanced and reliable operations.</i>
 
-### Features
-- File sharing modified version made by - [@Its_Oreki_Hotarou](https://t.me/Its_Oreki_Hotarou)**
-- Fully customisable.
-- Two Force Sub Channels.
-- Also working on Render Or Koyeb.
-- Customisable welcome & Forcesub messages.
-- More than one Posts in One Link.
-- Can be deployed on heroku directly.
+### 2. ADMINS 👮🏻‍♂️: 
+<i>You can add one or multiple admins by providing their user IDs, and you can also remove all admins if needed. Admins have access to some useful bot commands but do not have access to all commands.</i>
 
-### Setup
+### 3. BAN 🚫: 
+<i>You can add user IDs to a banned list, preventing those who annoy you or spam the bot from using it. They will be unable to access the bot until you remove them from the banned list.</i>
 
-- Add the bot to Database Channel with all permission
-- Add bot to ForceSub channel as Admin with Invite Users via Link Permission if you enabled ForceSub 
+### 4. AUTO-DELETE 🗑⏱: 
+<i>This feature is crucial for protecting the bot from copyright strikes and reducing the risk of being banned from Telegram. It includes two options: first, you can enable or disable the auto-delete mode; second, you can set a timer, so files will be automatically deleted after a specified period. After that it also send a message that shows the "previous message was deleted" and provide the link to retrieve again the same files.</i>
 
-##
-### Installation
-#### Deploy on Heroku
-**BEFORE YOU DEPLOY ON HEROKU, YOU SHOULD FORK THE REPO AND CHANGE ITS NAME TO ANYTHING ELSE**<br>
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)</br>
+### 5. CONTENT BUTTON ⚪️: 
+<i>This feature allows you to add customizable buttons to files shared by the bot. Every file shared by the bot will have a button, which you can tailor to meet your specific needs.</i>
 
-##
-## Installation
-#### Deploy on Render
-<b>BEFORE DEPLOY ON RENDER, FORK REPO EDIT CONFIG, CREATE NEW WEB-SERVICE ADD VARIABLES AND ADD MONITOR THATS IT</b>
+### 6. SET BUTTON 🔘: 
+<i>This feature allows you to customize the content buttons on files shared by the bot. For example, you can set the button name and link. You could create a button labeled "Join Channel," which will appear on the files and contain a specific link provided by you.</i>
 
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com)
+### 7. HIDE CAPTION & PROTECT CONTENT 🫥🔒:
+<i>The "Hide Caption" feature allows you to remove the caption from shared files, while the "Protect Content" feature secures the files. If you enable "Protect Content," the files cannot be forwarded by users.</i>
 
-##
-#### Deploy in your VPS
-````bash
-git clone https://github.com/Sahil0976/MultiForce-Sub
-cd File-Sharing-Bot
-pip3 install -r requirements.txt
-# <Create config.py appropriately>
-python3 main.py
-````
+### 8. DATABASE 💾:
+<i>All the features mentioned above are stored permanently in the database, meaning the data will remain unchanged until you decide to modify it.</i>
 
-### Admin Commands
+### <i>🚀 In addition to the above, more user-friendly and advanced interaction features have been added. It is upgraded version of previous bot features, So more interactive then previous.</i>
 
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+
+### <h2>⚠️ YOU SHOULD ADD BELOW COMMANDS ON YOUR BOT:</h2>
 ```
-start - start the bot or get posts
-batch - create link for more than one posts
-genlink - create link for one post
-users - view bot statistics
-broadcast - broadcast any messages to bot users
-stats - checking your bot uptime
-help - For Help
-about - about bot
+start - ⚡️ ᴄʜᴇᴄᴋ ᴀʟɪᴠᴇ/ᴅᴇᴀᴅ !
+help - ⚡️ ɪɴsᴛʀᴜᴄᴛɪᴏɴ ғᴏʀ ᴜsɪɴɢ ʙᴏᴛ
+users - 👀 ᴠɪᴇᴡ ᴜsᴇʀ sᴇᴛᴛɪɴɢ ᴄᴏᴍᴍᴀɴᴅs
+forcesub - 👀 ᴠɪᴇᴡ ғᴏʀᴄᴇsᴜʙ ʀᴇʟᴀᴛᴇᴅ ᴄᴏᴍᴍᴀɴᴅs
+req_fsub - ⚙️ ᴠɪᴇᴡ ʀᴇǫᴜᴇsᴛ ғᴏʀᴄᴇsᴜʙ sᴇᴛᴛɪɴɢs
+files - ⚙️ ᴠɪᴇᴡ ᴍᴇssᴀɢᴇ/ғɪʟᴇs ʀᴇʟᴀᴛᴇᴅ sᴇᴛᴛɪɴɢs
+auto_del - ⚙️ ᴠɪᴇᴡ ᴀᴜᴛᴏ ᴅᴇʟᴇᴛᴇ sᴇᴛᴛɪɴɢs 
+cmd - ⚠️ ᴠɪᴇᴡ ʙᴀsɪᴄ ʙᴏᴛ ᴄᴏᴍᴍᴀɴᴅs (ᴀᴅᴍɪɴs)
+restart - ⚠️ ғᴏʀᴄᴇғᴜʟʟʏ ʀᴇsᴛᴀʀᴛ ᴛʜᴇ ʙᴏᴛ (ᴏᴡɴᴇʀ)
 ```
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
-### Variables
-
-* `API_HASH` Your API Hash from my.telegram.org
-* `APP_ID` Your API ID from my.telegram.org
-* `TG_BOT_TOKEN` Your bot token from @BotFather
-* `OWNER_ID` Must enter Your Telegram Id
-* `CHANNEL_ID` Your Channel ID eg:- -100xxxxxxxx
-* `DB_URL` Your mongo db url
-* `DB_NAME` Your mongo db session name
-* `ADMINS` Optional: A space separated list of user_ids of Admins, they can only create links
-* `START_MSG` Optional: start message of bot, use HTML and <a href='https://github.com/codexbotz/File-Sharing-Bot/blob/main/README.md#start_message'>fillings</a>
-* `FORCE_SUB_MESSAGE`Optional:Force sub message of bot, use HTML and Fillings
-* `FORCESUB_CHANNEL` Optional: ForceSub Channel ID, leave 0 if you want disable force sub
-* `FORCESUB_CHANNEL2` Optional: ForceSub Channel ID, leave 0 if you want disable force sub
-* `PROTECT_CONTENT` Optional: True if you need to prevent files from forwarding
-* `START_PIC` A pic with start message
-* `FORCE_PIC` A pic with forcesub message
-
-### Extra Variables
-
-* `CUSTOM_CAPTION` put your Custom caption text if you want Setup Custom Caption, you can use HTML and <a href='https://github.com/CodeXBotz/File-Sharing-Bot/blob/main/README.md#custom_caption'>fillings</a> for formatting (only for documents)
-* `DISABLE_CHANNEL_BUTTON` Put True to Disable Channel Share Button, Default if False
-* `BOT_STATS_TEXT` put your custom text for stats command, use HTML and <a href='https://github.com/codexbotz/File-Sharing-Bot/blob/main/README.md#custom_stats'>fillings</a>
-* `USER_REPLY_TEXT` put your text to show when user sends any message, use HTML
+<h2>🧑‍💻 DEVELOPER : <a href="https://t.me/Shidoteshika1">Shidoteshika (King 王)</a></h2>
 
 
-### Fillings
-#### START_MESSAGE | FORCE_SUB_MESSAGE
-
-* `{first}` - User first name
-
-#### CUSTOM_CAPTION
-
-* `{filename}` - file name of the Document
-* `{previouscaption}` - Original Caption
-
-#### CUSTOM_STATS
-
-* `{uptime}` - Bot Uptime
-
-**Star this Repo if you Liked it ⭐⭐⭐**
 
