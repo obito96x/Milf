@@ -103,7 +103,7 @@ async def start_command(client: Client, message: Message):
                 asyncio.create_task(auto_del_notification(client.username, last_message, DEL_TIMER, message.command[1]))
                         
     else:   
-        reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton('⛩️ Aɴɪᴍᴇ', url='https://t.me/Anime_Weekends'), InlineKeyboardButton('⚡️ Oɴɢᴏɪɴɢ', url='https://t.me/Ongoing_Weekends')], [InlineKeyboardButton('🌐 Eᴍɪɴᴇɴᴄᴇ Sᴏᴄɪᴇᴛʏ', url='https://t.me/Eminence_Society')]])
+        reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton('ᴀɴɪᴍᴇ sᴏᴄɪᴇᴛʏ', url='https://t.me/Anime_society_official'), InlineKeyboardButton('ᴏɴɢᴏɪɴɢ sᴏᴄɪᴇᴛʏ', url='https://t.me/Ongoing_society')], [InlineKeyboardButton('ᴏᴜʀ ᴄᴏᴍᴍᴜɴɪᴛʏ', url='https://t.me/Society_network')]])
 
         await message.reply_photo(
             photo = random.choice(PICS),
@@ -204,7 +204,7 @@ async def not_joined(client: Client, message: Message):
                         
     except Exception as e:
         print(f"Unable to perform forcesub buttons reason : {e}")
-        return await temp.edit(f"<b><i>! Eʀʀᴏʀ, Cᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ ᴛᴏ sᴏʟᴠᴇ ᴛʜᴇ ɪssᴜᴇs @Shidoteshika1</i></b>\n<blockquote expandable><b>Rᴇᴀsᴏɴ:</b> {e}</blockquote>")
+        return await temp.edit(f"<b><i>! Eʀʀᴏʀ, Cᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ ᴛᴏ sᴏʟᴠᴇ ᴛʜᴇ ɪssᴜᴇs @cosmic_awaken</i></b>\n<blockquote expandable><b>Rᴇᴀsᴏɴ:</b> {e}</blockquote>")
 
 
 #=====================================================================================##
@@ -222,7 +222,7 @@ async def restart_bot(client: Client, message: Message):
         os.execl(sys.executable, *args)
     except Exception as e:
         print(f"Error occured while Restarting the bot: {e}")
-        return await msg.edit_text(f"<b><i>! Eʀʀᴏʀ, Cᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ ᴛᴏ sᴏʟᴠᴇ ᴛʜᴇ ɪssᴜᴇs @Shidoteshika1</i></b>\n<blockquote expandable><b>Rᴇᴀsᴏɴ:</b> {e}</blockquote>")
+        return await msg.edit_text(f"<b><i>! Eʀʀᴏʀ, Cᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ ᴛᴏ sᴏʟᴠᴇ ᴛʜᴇ ɪssᴜᴇs @cosmic_awaken</i></b>\n<blockquote expandable><b>Rᴇᴀsᴏɴ:</b> {e}</blockquote>")
     # Optionally, you can add cleanup tasks here
     #subprocess.Popen([sys.executable, "main.py"])  # Adjust this if your start file is named differently
     #sys.exit()
